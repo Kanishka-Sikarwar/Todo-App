@@ -1,99 +1,130 @@
-*{
+* {
   font-family: 'Inter', sans-serif;
-  margin : 0;
-  padding : 0;
-  box-sizing : border-box;
-  color : #202124;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #2b2d42;
 }
 
-h1,
-h2,
-h3,
-input,
-button {
-  font-family : 'Press Start 2P', system-ui;
+h1, h2, h3, input, button {
+  font-family: 'Press Start 2P', system-ui;
 }
 
-#root{
-  min-height :100vh;
+/* App container */
+/* App container */
+#root {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 14px;
-  background: #eff6ff;
+  background: 
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.5), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.5), transparent 40%),
+    linear-gradient(135deg, #e6e6fa, #d6d6f5, #cce0ff);
+  background-size: cover;
   gap: 14px;
 }
 
-body{
-  display : flex;
-  flex-direction : column;
-  padding : 14px;
-  background : #eff6ff;
-  gap : 14px;
+/* Body for extra safety */
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  background: 
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.5), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.5), transparent 40%),
+    linear-gradient(135deg, #e6e6fa, #d6d6f5, #cce0ff);
+  background-size: cover;
+  gap: 14px;
 }
 
+
+/* Header styling */
 header {
-  display : flex;
+  display: flex;
   align-items: stretch;
-  margin-bottom: 14px
+  margin-bottom: 14px;
 }
 
-header,
-.main {
+header, .main {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
   gap: 14px;
 }
 
+/* Input box */
 header input {
   flex: 1;
   border-radius: 14px;
   outline: none;
   width: 100%;
+  background: #ffffff;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
 }
 
+header input:focus {
+  border-color: #89cff0;
+  box-shadow: 0 4px 12px rgba(137, 207, 240, 0.3);
+}
+
+/* Buttons */
 header button {
   border-radius: 14px;
-  background: transparent;
-  transition-duration: 200ms;
+  background: #b3aaff; /* Soft lavender */
+  color: #fff;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 header button:hover {
-  opacity: 0.7;
+  background: #a18ee0; /* Slightly darker violet on hover */
+  transform: scale(1.05);
 }
 
-header button,
-header input {
+header button, header input {
   padding: 14px 18px;
   border: none;
   outline: none;
-  background: white;
 }
 
+/* Paragraphs */
 p {
   font-size: 0.9em;
 }
 
+/* Main todo list */
 .main {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
+/* Todo item card */
 .todoItem {
   display: flex;
   align-items: center;
   gap: 14px;
   padding: 14px;
   border-radius: 14px;
-  background: white;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  animation: fadeIn 0.4s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.todoItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
 
 .todoItem p {
   flex: 1;
 }
 
+/* Actions */
 .actionsContainer {
   display: flex;
   align-items: center;
@@ -101,27 +132,70 @@ p {
 }
 
 .actionsContainer button {
-  transition-duration: 200ms;
+  transition: all 0.3s ease;
   border: none;
   background: transparent;
   cursor: pointer;
-  padding: 6px; /* space around icon inside the button */
-  border-radius: 6px; /* optional: makes hover look nice */
+  padding: 6px;
+  border-radius: 6px;
 }
 
 .actionsContainer button:hover {
-  opacity: 0.7;
+  background: rgba(137, 207, 240, 0.2);
+  transform: scale(1.1);
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.appHeader {
+  width: 100%;
+  padding: 30px;
+  background: linear-gradient(135deg, #b3aaff, #d5c6ff);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  animation: fadeInDown 0.6s ease;
+}
+
+.appHeader h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
+  color: white;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
 
+/* Larger screens adjustments */
 @media (min-width: 640px) {
-
-  header button,
-  header input {
+  header button, header input {
     font-size: 1.2em;
   }
-
   p {
     font-size: 1em;
   }
